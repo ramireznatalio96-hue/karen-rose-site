@@ -37,6 +37,7 @@ body {
   width: 200px;
   transform: translate(-50%, -50%);
   animation: spin 10s linear infinite;
+  filter: drop-shadow(0 0 20px red);
 }
 
 @keyframes spin {
@@ -48,14 +49,15 @@ body {
   position: absolute;
   width: 15px;
   height: 20px;
-  background: pink;
+  background: radial-gradient(circle, #ff4d6d, #800020);
   border-radius: 50%;
   animation: fall linear infinite;
 }
 
 @keyframes fall {
-  0% { transform: translateY(-10vh); }
-  100% { transform: translateY(110vh); }
+  0% { transform: translateY(-10vh); opacity:0; }
+  20% { opacity:1; }
+  100% { transform: translateY(110vh); opacity:0; }
 }
 </style>
 </head>
@@ -65,14 +67,17 @@ body {
 <div id="title">Karen te quiero mucho</div>
 <div id="bottomText">Te quiero ver cada minuto</div>
 
-<img id="rose" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Red_rose.png/512px-Red_rose.png">
+<!-- EMBEDDED ROSE -->
+<img id="rose" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=500">
 
 <script>
 for (let i = 0; i < 30; i++) {
   const p = document.createElement("div");
   p.className = "petal";
+
   p.style.left = Math.random() * 100 + "vw";
   p.style.animationDuration = (3 + Math.random()*4) + "s";
+
   document.body.appendChild(p);
 }
 </script>
