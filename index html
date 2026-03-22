@@ -10,11 +10,10 @@ body {
   margin: 0;
   overflow: hidden;
   background: radial-gradient(circle, #1a0000, #000);
-  font-family: Arial, sans-serif;
   color: white;
+  font-family: Arial;
 }
 
-/* TEXT */
 #title {
   position: absolute;
   top: 40px;
@@ -31,50 +30,32 @@ body {
   font-size: 1.6em;
 }
 
-/* ROSE */
 #rose {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 220px;
+  width: 200px;
   transform: translate(-50%, -50%);
-  animation: spin 12s linear infinite;
-  filter: drop-shadow(0 0 25px red);
+  animation: spin 10s linear infinite;
 }
 
-/* PETALS */
-.petal {
-  position: absolute;
-  width: 18px;
-  height: 24px;
-  background: radial-gradient(circle, #ff4d6d, #800020);
-  border-radius: 50% 50% 60% 60%;
-  opacity: 0.85;
-  animation: fall linear infinite;
-}
-
-/* ANIMATIONS */
 @keyframes spin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes fall {
-  0% {
-    transform: translateY(-10vh) rotate(0deg);
-    opacity: 0;
-  }
-  20% { opacity: 1; }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+.petal {
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  background: pink;
+  border-radius: 50%;
+  animation: fall linear infinite;
 }
 
-#musicBtn {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+@keyframes fall {
+  0% { transform: translateY(-10vh); }
+  100% { transform: translateY(110vh); }
 }
 </style>
 </head>
@@ -84,29 +65,14 @@ body {
 <div id="title">Karen te quiero mucho</div>
 <div id="bottomText">Te quiero ver cada minuto</div>
 
-<button id="musicBtn">Play Music ❤️</button>
-
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1c3e7b9.mp3">
-</audio>
-
-<!-- REAL ROSE -->
 <img id="rose" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Red_rose.png/512px-Red_rose.png">
 
 <script>
-// MUSIC (mobile safe)
-document.body.addEventListener("click", () => {
-  document.getElementById("music").play();
-}, { once: true });
-
-// PETALS GENERATOR
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 30; i++) {
   const p = document.createElement("div");
   p.className = "petal";
-
   p.style.left = Math.random() * 100 + "vw";
-  p.style.animationDuration = (4 + Math.random() * 4) + "s";
-
+  p.style.animationDuration = (3 + Math.random()*4) + "s";
   document.body.appendChild(p);
 }
 </script>
